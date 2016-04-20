@@ -10,7 +10,7 @@ with open('../data/output.csv', 'rb') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',')
     # print spamreader
     for row in spamreader:
-    	if row[4] == "Goldman Sachs":
+    	if row[4] == "Google":
     		gs.append([row[0], row[1]])
 
 gs = np.asmatrix(gs)
@@ -41,4 +41,9 @@ with open('data.tsv', 'w') as tsvfile:
     writer = csv.writer(tsvfile, delimiter='\t', lineterminator='\n')
     writer.writerow(["time", "surge"])
     for record in result:
-        writer.writerow([record[0], record[1]])
+        data = []
+        data.append("[%s,"%record[0])
+        data.append("%s],"%record[1])
+        # "[%s,%s],"%(record[0], record[1])
+        print data
+        writer.writerow(data)
