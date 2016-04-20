@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    google.charts.load('current', {
+        'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Hour', 'Surge Multiplier'],
+            [1.0, 1.0800884955752212],
+            [2.0, 1.0],
+            [3.0, 1.0],
+            [4.0, 1.0],
+            [5.0, 1.3350877192982462],
+            [6.0, 1.4030973451327424],
+            [7.0, 1.3383928571428581],
+            [8.0, 1.3938053097345133],
+            [9.0, 1.3714285714285717],
+            [10.0, 1.0],
+            [11.0, 1.0],
+            [12.0, 1.0],
+            [13.0, 1.0],
+            [14.0, 1.0203539823008854],
+            [15.0, 1.3909909909909897],
+            [16.0, 1.2088105726872245],
+            [17.0, 1.3515050167224081],
+            [18.0, 1.6333333333333331],
+            [19.0, 1.3087854603499263],
+            [20.0, 1.2117647058823529],
+            [21.0, 1.3691964285714271],
+            [22.0, 1.1806167400881067],
+            [23.0, 1.4427312775330385],
+            [24.0, 1.3264317180616712]
+        ]);
+
+        var options = {
+            title: 'Surge Multiplier vs Hour at Goldman Sachs from 4/11/16 to 4/15/16',
+            curveType: 'function',
+            legend: {
+                position: 'bottom'
+            }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+    }
+    </script>
+</head>
+
+<body>
+    <div id="curve_chart" style="width: 900px; height: 500px"></div>
+</body>
+
+</html>

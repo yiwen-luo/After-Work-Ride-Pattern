@@ -1,0 +1,10 @@
+{
+    "places": [
+        { "name": "Goldman Sachs", "lat": "40.715082", "lon": "-74.014390" },
+        { "name": "Deutsche Bank", "lat": "40.757965", "lon": "-73.972302" },
+        { "name": "Google", "lat": "40.741984", "lon": "-74.004512" },
+        { "name": "Palantir", "lat": "40.740178", "lon": "-74.006891" },
+        { "name": "Bloomberg", "lat": "40.761928", "lon": "-73.967972" },
+        { "name": "WSJ", "lat": "40.758729", "lon": "-73.982166" }
+    ]
+}
