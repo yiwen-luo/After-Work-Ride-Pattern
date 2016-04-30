@@ -1,4 +1,4 @@
 directive:
-	python main.py
+	python plot.py
 clean:
-	rm *.pyc -rf .idea/
+	rm *.pyc & rm -rf .idea/
