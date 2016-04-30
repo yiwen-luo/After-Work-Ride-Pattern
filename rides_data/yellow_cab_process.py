@@ -3,7 +3,7 @@ from datetime import timedelta, date
 
 filename = 'yellow_tripdata_2015-04.csv'
 start_date = '2015-04-01'
-end_date = '2015-04-30'
+end_date = '2015-04-01'
 pick_time_start = '22:30:00'
 pick_time_end = '23:29:59'
 # longi_low = -74.016179
@@ -15,7 +15,6 @@ longi_high = -74.001477
 lati_low = 40.740372
 lati_high = 40.742359
 
-
 start_year = int(start_date[0:4])
 start_month = int(start_date[5:7])
 start_day = int(start_date[8:10])
@@ -26,12 +25,7 @@ end_day = int(end_date[8:10])
 
 
 def daterange(start_date, end_date):
-    for n in range(int((end_date - start_date).days)):
-        yield start_date + timedelta(n)
-
-
-def daterange(start_date, end_date):
-    for n in range(int((end_date - start_date).days)):
+    for n in range(int((end_date - start_date).days) + 1):
         yield start_date + timedelta(n)
 
 
@@ -42,7 +36,7 @@ for single_date in daterange(start_d, end_d):
     if single_date.isoweekday() != 6 and single_date.isoweekday() != 7:  # only use weekdays
         range_date.append(single_date.strftime('%Y-%m-%d'))
 
-f = open('yellow_tripdata_2015-04.csv', "rb")
+f = open(filename, "rb")
 rows = csv.reader(f, delimiter=' ', quotechar='|')
 longi_dropoff = []
 lati_dropoff = []
