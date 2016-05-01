@@ -6,7 +6,8 @@
     <script type="text/javascript">
 
     d3.tsv("data.tsv", function(data) {
-        var result = [['Hour', 'Surge Multiplier']];
+        // read data from tsv file
+        var result = [['Hour', 'Surge Multiplier']]; 
         for (i = 0; i != data.length; i++) {
             result.push([parseFloat(data[i]["time"]),parseFloat(data[i]["surge"])])
         }
@@ -14,15 +15,17 @@
             'packages': ['corechart']
         });
         google.charts.setOnLoadCallback(drawChart);
+        // reformat legend
         var company_name = data[0]["company"];
         var start = data[0]["start"];
         var end = data[0]["end"];
         // format legend string
         var timeperiod = (start == end)?" on 4/"+start+"/2016":' from 4/' + start + '/16'+ ' to 4/' + end + '/16';
         
+        // draw the google chart
         function drawChart() {
-            var data = google.visualization.arrayToDataTable(result);
-            var title = 'Surge Multiplier vs Hour at ' + company_name + timeperiod;
+            var data = google.visualization.arrayToDataTable(result); 
+            var title = 'Surge Multiplier vs Hour at ' + company_name + timeperiod; // set title
             var options = {
                 title: title,
                 curveType: 'function',

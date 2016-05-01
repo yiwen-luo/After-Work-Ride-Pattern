@@ -4,18 +4,21 @@ import json
 import decimal
 import ConfigParser
 
+# access config information
 config = ConfigParser.RawConfigParser()
 config.read('../config.cfg')
 
+# get access to dynomodb
 dynamodb = boto3.resource('dynamodb', region_name=config.get('dynamo', 'region_name'), endpoint_url=config.get('dynamo', 'endpoint_url'))
 
+# for the use to delete the database
 def delete_database(table):
     try:
         table.delete()
     except Exception, e:
         raise e
 
-
+# create a dynamodb table
 def create_database(tablename):
     table = dynamodb.create_table(
         TableName=tablename,
@@ -52,10 +55,12 @@ def create_database(tablename):
     return table
 
 
+# access the database table
 def get_table(tablename):
     return dynamodb.Table(tablename)
 
 
+# wrapper function to insert item into table, data format specified
 def insert(table, item):
     response = table.put_item(
         Item={

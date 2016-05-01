@@ -17,6 +17,7 @@ def companyDate(name, day):
 
     gs = np.asmatrix(gs)
 
+    # extract hour data
     for item in gs:
     	item[0,0] = datetime.datetime.fromtimestamp(float(item[0,0])).strftime("%H")
 
@@ -28,6 +29,7 @@ def companyDate(name, day):
     	count[int(item[0,0])] += 1
     	total_surge[int(item[0,0])] += float(item[0,1])
 
+    # set averaged surge multiplier
     avg_surge = total_surge/count
     # for consistency test by imputing data with reasonable random number
     avg_surge = [np.random.uniform(1, 1.5) if np.isnan(x) else x for x in avg_surge]
@@ -38,11 +40,13 @@ def companyDate(name, day):
 
     # save to tsv file for plot
     with open('data.tsv', 'w') as tsvfile:
+        # set up csv writer for tsv file
         writer = csv.writer(tsvfile, delimiter='\t', lineterminator='\n')
         writer.writerow(["time", "surge", "company", "start", "end"])
         for record in result:
             # data = []
             if record[0]>= 12:
+                # forcus on data whose time is in the afternoon and evening
                 # data.append("[%s,"%record[0])
                 # data.append("%s],"%record[1])
                 writer.writerow([record[0], record[1], name, int(day[0]), int(day[-1])])

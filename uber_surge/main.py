@@ -28,7 +28,9 @@ tablename = "storytelling"
 dynamodb_table = database.get_table(tablename)
 
 while True:
+    # infinite loop 
     for company in location["places"]:
+        # set api parameters
         start_latitude = end_latitude = company["lat"]
         start_longitude = end_longitude = company["lon"]
         parameters = {
@@ -40,9 +42,10 @@ while True:
         }
         response = requests.get(uber_url, params=parameters)
         data = response.json()
+        # retrieve data
         for price in data["prices"]:
             if price["display_name"] == "uberX":
-                # insert into dynamodb 
+                # create item and insert into dynamodb 
                 item = json.loads('{"name":"%s","time":"%s","surge_multiplier":"%s","lat":"%s","lon":"%s"}' % (company["name"], time.time(), price["surge_multiplier"], start_latitude, start_longitude), )
                 print(item)
                 database.insert(dynamodb_table, item)            

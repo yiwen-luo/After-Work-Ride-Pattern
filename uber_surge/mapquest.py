@@ -2,21 +2,23 @@ import requests
 import ConfigParser
 
 
-def getBoundingBox(latitude, longitude, milesFromCenter) :  
-  approxLatDegreeMiles = 69
-  approxLonDegreeMiles = 53
+def getBoundingBox(latitude, longitude, milesFromCenter):  
+    # format parameter string for the access of bouding box
+    # given lat, lon and radius in miles, return the bounding box of square size
+    approxLatDegreeMiles = 69
+    approxLonDegreeMiles = 53
   
-  #calculate upper left
-  ulLat = latitude + float(milesFromCenter) / float(approxLatDegreeMiles)
-  ulLon = longitude + float(milesFromCenter) / float(approxLonDegreeMiles)
-  
-  #calculate lower right
-  lrLat = latitude - float(milesFromCenter) / float(approxLatDegreeMiles)
-  lrLon = longitude - float(milesFromCenter) / float(approxLonDegreeMiles)
-  
-  box = str(ulLat) + "," + str(ulLon) + "," + str(lrLat) + "," + str(lrLon)
+    #calculate upper left
+    ulLat = latitude + float(milesFromCenter) / float(approxLatDegreeMiles)
+    ulLon = longitude + float(milesFromCenter) / float(approxLonDegreeMiles)
 
-  return box
+    #calculate lower right
+    lrLat = latitude - float(milesFromCenter) / float(approxLatDegreeMiles)
+    lrLon = longitude - float(milesFromCenter) / float(approxLonDegreeMiles)
+
+    box = str(ulLat) + "," + str(ulLon) + "," + str(lrLat) + "," + str(lrLon)
+
+    return box
 
 # load config file
 config = ConfigParser.RawConfigParser()
