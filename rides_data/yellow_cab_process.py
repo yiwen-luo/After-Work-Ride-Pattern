@@ -6,12 +6,17 @@ start_date = '2015-04-07'
 end_date = '2015-04-07'
 pick_time_start = '18:00:00'
 pick_time_end = '19:29:59'
+
+
+'''six companies' location'''
+
 # GS:
 longi_low = -74.016179
 longi_high = -74.013117
 lati_low = 40.713644
-lati_high = 40.715562  # GOOG:
+lati_high = 40.715562  
 
+# GOOG:
 
 # longi_low = -74.005104
 # longi_high = -74.001477
@@ -25,7 +30,7 @@ lati_high = 40.715562  # GOOG:
 
 
 
-def daterange(start_date, end_date):
+def daterange(start_date, end_date):  # set date range
     for n in range(int((end_date - start_date).days)+1):
         yield start_date + timedelta(n)
 
@@ -33,14 +38,14 @@ def daterange(start_date, end_date):
 def main():
     start_year = int(start_date[0:4])
     start_month = int(start_date[5:7])
-    start_day = int(start_date[8:10])
+    start_day = int(start_date[8:10])   # get the year, month, day information of start_date
 
-    end_year = int(end_date[0:4])
+    end_year = int(end_date[0:4])    # get the year, month, day information of end_date
     end_month = int(end_date[5:7])
     end_day = int(end_date[8:10])
 
-    start_d = date(start_year, start_month, start_day)
-    end_d = date(end_year, end_month, end_day)
+    start_d = date(start_year, start_month, start_day)   # set start date info
+    end_d = date(end_year, end_month, end_day)           # set end date info
     range_date = []
     for single_date in daterange(start_d, end_d):
         if single_date.isoweekday() != 6 and single_date.isoweekday() != 7:  # only use weekdays
