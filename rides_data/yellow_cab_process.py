@@ -6,7 +6,7 @@ start_date = '2015-04-07'
 end_date = '2015-04-07'
 pick_time_start = '18:00:00'
 pick_time_end = '19:29:59'
-
+# set kinds of date and pick up time window.
 
 '''six companies' location'''
 
@@ -29,18 +29,20 @@ lati_high = 40.715562
 # lati_high = 40.740317
 
 
-
-def daterange(start_date, end_date):  # set date range
+def daterange(start_date, end_date):  
+    # set date range
     for n in range(int((end_date - start_date).days)+1):
         yield start_date + timedelta(n)
 
 
 def main():
+    # get the year, month, day information of start_date
     start_year = int(start_date[0:4])
     start_month = int(start_date[5:7])
-    start_day = int(start_date[8:10])   # get the year, month, day information of start_date
+    start_day = int(start_date[8:10])   
 
-    end_year = int(end_date[0:4])    # get the year, month, day information of end_date
+    # get the year, month, day information of end_date
+    end_year = int(end_date[0:4])    
     end_month = int(end_date[5:7])
     end_day = int(end_date[8:10])
 
@@ -51,11 +53,12 @@ def main():
         if single_date.isoweekday() != 6 and single_date.isoweekday() != 7:  # only use weekdays
             range_date.append(single_date.strftime('%Y-%m-%d'))
 
-    f = open('yellow_tripdata_2015-04.csv', "rb")
-    rows = csv.reader(f, delimiter=' ', quotechar='|')
-    longi_dropoff = []
+    f = open('yellow_tripdata_2015-04.csv', "rb") # open up local file
+    rows = csv.reader(f, delimiter=' ', quotechar='|') # set up local file csv reader
+    longi_dropoff = [] # initialize 
     lati_dropoff = []
-    for i, row_raw in enumerate(rows):
+    for i, row_raw in enumerate(rows):  # at peak hours for each company, research the drop off location for the rides which departure 
+                                        # from that six companies of our choice
         if i > 0:
             row = row_raw[0].split(",") + row_raw[1].split(",") + row_raw[2].split(",")
             if row[1] == row[3] and row[3] in range_date and pick_time_start <= row[2] and row[2] <= pick_time_end:
@@ -64,6 +67,7 @@ def main():
                     longi_dropoff.append(float(row[11]))
                     lati_dropoff.append(float(row[12]))
 
+    # pick out the rides which satisfy the time window and location demands.
     print longi_dropoff
     print lati_dropoff
 
