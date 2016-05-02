@@ -41,9 +41,9 @@ Retrieve data from uber api and store surge price multiplier to DynamoDB for 6 d
 
 ## Weather
 
-Main.py can crawl weather and corresponding time by yahoo_weather API and store them into our database. Considering the manhattan has the same weather, we only targeted an uniform weather. 
+Weather.py can crawl weather and corresponding time by yahoo_weather API and store them into our database. Considering the manhattan has the same weather, we only targeted an uniform weather. 
 
-![screenshot](presentation_img/yahoo_weather.png)
+![screenshot](presentation_img/yahoo_weather.png = 120x72)
 
 ## Incident
 
@@ -64,10 +64,16 @@ Also, we wrote incident.py to fetch incident data around specific companies thro
 	- `plot.py` read the csv data file and analyzed the averaged surge multiplier information for further use. It stored the favored surge information from noon to midnight to a local tsv file, for the use to plot Google charts. The stored data format could be checked by taking look at the `data.tsv` file. Usage is `python plot.py`.
 - `database.py`
 	- `database.py` contains utility functions for accessing AWS DynamoDB, such as creating tables, insert items into tables, delete tables and get the access of the table.
+- `database_weather.py` 
+	- `database_weather.py` is for weather data storage and has the same function with database.py
+- `database_incident.py` 
+	- `database_incident.py` is for incident data storage and has the same function with database.py
 - `index.html`
 	- `index.html` is used to plot the uber surge multiplier vs time range by using Google Chart. One could just open the html file in Firefox. Chrome does not perform perfect since it assures one to deploy the web application on a server. It uses `d3js` to open the local tsv file and extracts the data as required json array.
-- `mapquest.py`
-	- `mapquest.py` does similar job to retrieve incident information.
+- `weather.py`
+	- `weather.py` does similar job to retrieve weather information.
+- `incident.py`
+	- `incident.py` does similar job to retrieve incident information.
 - `location.json`
 	- `location.json` contains geolocation of the 6 companies we choose as our target of investigation.
 - [`config.cfg`]
@@ -110,11 +116,35 @@ $ sudo pip install boto3
 ```
 and type the AWS password.
 
-If one want to run locally, then
+## How to operate virtual machine remotely
+
+Connecting to Your Linux Instance Using SSH
+
+After you launch your instance, you can connect to it and use it the way that you'd use a computer sitting in front of you.
+
+Use the chmod command to make sure your private key file isn't publicly viewable. For example, if the name of your private key file is my-key-pair.pem, use the following command:
+
+```  
+chmod 400 /path/my-key-pair.pem
+
+```
+SSH comand is like:
+
+```  
+ssh -i /path/my-key-pair.pem ec2-user@ec2-198-51-100-1.compute-1.amazonaws.com
+
+```
+
+```
+After connecting with EC2, if one want to run locally, then
 
 ```
 $ python main.py
+
 ```
+
+Incident.py and main.py for weather can be operated like this.
+
 If one want to run it remotely on AWS, then one could use `nohup` command.
 
 `nohup` is a POSIX command to ignore the HUP (hangup) signal. The HUP signal is, by convention, the way a terminal warns dependent processes of logout. Output that would normally go to the terminal goes to a file called nohup.out if it has not already been redirected.
