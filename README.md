@@ -151,7 +151,7 @@ If one want to run the data-crawling part locally, then
 $ python main.py
 ```
 
-`incident.py` and `main.py` for weather can be operated like this, too.
+`incident.py` and `weather.py` for weather can be operated like this, too.
 
 If one want to run it remotely on AWS, then follow the previous steps to connect to the EC2 instance. Direct to the script folders and one could use `nohup` command.
 
@@ -178,10 +178,29 @@ By running the above, one could have a hidden process requesting for API and get
 
 ## Google Chart plotting
 
+First, we can obtain peak hours for six companies from surge program and plot program.
+
+```
+$ python plot.py
+
+```
+
 For uber__surge data, one just need to open the `index.html` in Firefox. The project is hard to be deployed on Chrome, since there will be error message telling users that the local intermediate data file should be uploaded on a local server, while Firefox has no such requirement.
+
+
+And then we can observe peak hours from graph and change parameter in yellow_cab_process.py and run
+
+```
+$ python yellow_cab_process.py
+
+```
+
+then we can get all drop off data within 2 hours around peak hours for each company.
+
 
 ## Google Heatmap plotting
 
 For taxi rides data, specifically the `YellowcabHeatMap.html` file, one could just open up in Chrome since it doesn't use `d3js` for data retrieving. There are further work suggested that we could turn it into a Backend-Frontend design with the usage of Django or Flask. However, since this is just for the presentation purpose, we just manually import the data that we get from python files.
 
+![screenshot](rides_data_output/rain/bloomberg/Picture2.png)
 ![screenshot](rides_data_output/friday/bloomberg/Picture1.png)
