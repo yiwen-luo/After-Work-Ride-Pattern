@@ -41,7 +41,9 @@ Retrieve data from uber api and store surge price multiplier to DynamoDB for 6 d
 
 ## Weather
 
-main.py can crawl weather and corresponding time by yahoo_weather API and store them into our database. Considering the manhattan has the same weather, we only targeted an uniform weather. 
+Main.py can crawl weather and corresponding time by yahoo_weather API and store them into our database. Considering the manhattan has the same weather, we only targeted an uniform weather. 
+
+![screenshot](presentation_img/yahoo_weather.png)
 
 ## Incident
 
