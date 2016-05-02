@@ -204,6 +204,6 @@ For taxi rides data, specifically the `YellowcabHeatMap.html` file, one could ju
 
 ![screenshot](rides_data_output/rain/bloomberg/Picture2.png)
 
-The deeper color there is, means more taxis drop off passengers there. 
+Deeper color there is, means more taxis drop off passengers there.
 
 ![screenshot](rides_data_output/friday/bloomberg/Picture1.png)
