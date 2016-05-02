@@ -9,9 +9,6 @@ import ConfigParser
 import decimal
 import urllib2, urllib   #import kinds of libraries
 
-
-
-
 # read table name
 tablename = "uber_weather"
 

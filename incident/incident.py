@@ -12,29 +12,28 @@ import urllib2, urllib
 import requests
 import ConfigParser
 
-# load config file
-config = ConfigParser.RawConfigParser()
-config.read('../config.cfg')
+# import kinds of libraries
 
 # read table name
 tablename = "uber_incident"
 
 # create database if not exist
-dynamodb_table = database_incident.create_database(tablename)
 
-dynamodb_table = database_incident.get_table(tablename)
+dynamodb_table = database_incident.create_database(tablename)  
 
-with open('location.json') as data_file:    
+dynamodb_table = database_incident.get_table(tablename) # get table
+
+with open('location.json') as data_file:       # read company information from json file
     location = json.load(data_file)
 
-order = 0
+order = 0 #initialize order to 0
 
-def getBoundingBox(latitude, longitude, milesFromCenter) :
-  
+def getBoundingBox(latitude, longitude, milesFromCenter) :   # define the function which is to get a range for given latitiude and longtitude
+                                                            # according to given radius
   #These values are temporary until I actually do the math
   
   #close to accurate
-        approxLatDegreeMiles = 69
+        approxLatDegreeMiles = 69  
   
   #accurate around 40 degrees north
         approxLonDegreeMiles = 53
@@ -60,7 +59,7 @@ while True:
     # load config file
 
         # key = config.get('mapquest_api', 'ISmwDOKPbPCsUW1RD2yG5CnYwKG5MdQ2')
-        key = "ISmwDOKPbPCsUW1RD2yG5CnYwKG5MdQ2"
+        key = "key"
 
         mapquest_url = 'http://www.mapquestapi.com/traffic/v2/incidents'
 

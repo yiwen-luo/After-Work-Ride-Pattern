@@ -39,6 +39,16 @@ The data visualization is responsible for extracting data from cloud, calculatin
 ## uber_surge
 Retrieve data from uber api and store surge price multiplier to DynamoDB for 6 different companies in Manhattan every 5 seconds for further analysis.
 
+## Weather
+
+main.py can crawl weather and corresponding time by yahoo_weather API and store them into our database. Considering the manhattan has the same weather, we only targeted an uniform weather. 
+
+## Incident
+
+This folder includes database program which is created for calling kinds of operations to database, for example, create, insert, delete and get table.
+
+Also, we wrote incident.py to fetch incident data around specific companies through mapquest API. Specifically, given a location and a radius value and incident information can be returned and stored into dynamodb.
+
 **Note:** Some configuration files are not uploaded since they contains either api keys or AWS credentials
 
 ## Scripts and intermediate data
