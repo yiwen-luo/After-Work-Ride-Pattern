@@ -51,6 +51,8 @@ This folder includes database program which is created for calling kinds of oper
 
 Also, we wrote `incident.py` to fetch incident data around specific companies through MapQuest API. Specifically, given a location and a radius value and incident information can be returned and stored into DynamoDB.
 
+![screenshot](img/mapquest.png)
+
 **Note:** Some configuration files are not uploaded since they contains either api keys or AWS credentials
 
 ## rides_data
@@ -182,7 +184,6 @@ First, we can obtain peak hours for six companies from surge program and plot pr
 
 ```
 $ python plot.py
-
 ```
 
 For uber__surge data, one just need to open the `index.html` in Firefox. The project is hard to be deployed on Chrome, since there will be error message telling users that the local intermediate data file should be uploaded on a local server, while Firefox has no such requirement.
@@ -192,7 +193,6 @@ And then we can observe peak hours from graph and change parameter in yellow_cab
 
 ```
 $ python yellow_cab_process.py
-
 ```
 
 then we can get all drop off data within 2 hours around peak hours for each company.
@@ -203,4 +203,7 @@ then we can get all drop off data within 2 hours around peak hours for each comp
 For taxi rides data, specifically the `YellowcabHeatMap.html` file, one could just open up in Chrome since it doesn't use `d3js` for data retrieving. There are further work suggested that we could turn it into a Backend-Frontend design with the usage of Django or Flask. However, since this is just for the presentation purpose, we just manually import the data that we get from python files.
 
 ![screenshot](rides_data_output/rain/bloomberg/Picture2.png)
+
+The deeper color there is, means more taxis drop off passengers there. 
+
 ![screenshot](rides_data_output/friday/bloomberg/Picture1.png)
