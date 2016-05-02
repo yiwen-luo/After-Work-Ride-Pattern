@@ -1,4 +1,4 @@
-# AfterWorkRidePattern
+# After-Work-Ride-Pattern
 
 COMS 6998 Topics in Computer Science
 
