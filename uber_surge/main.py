@@ -12,14 +12,14 @@ config = ConfigParser.RawConfigParser()
 config.read('../config.cfg')
 
 # get favored locations' information
-with open('location.json') as data_file:    
+with open('location.json') as data_file:
     location = json.load(data_file)
 
 # uber surge data get
 server_token = config.get('dynamo', 'server_token')
 uber_url = config.get('uber_api', 'uber_url')
 
-# read table name
+# set table name
 tablename = "storytelling"
 
 # create database if not exist
@@ -28,7 +28,7 @@ tablename = "storytelling"
 dynamodb_table = database.get_table(tablename)
 
 while True:
-    # infinite loop 
+    # infinite loop
     for company in location["places"]:
         # set api parameters
         start_latitude = end_latitude = company["lat"]
@@ -41,13 +41,15 @@ while True:
             'end_longitude': end_longitude
         }
         response = requests.get(uber_url, params=parameters)
+        # get the json format data from response
+        # since the frequency is really slow, there is no need to parse the reponse if 404 is responded
         data = response.json()
         # retrieve data
         for price in data["prices"]:
+            # we are interested in uberX surge data
             if price["display_name"] == "uberX":
-                # create item and insert into dynamodb 
+                # create item and insert into dynamodb
                 item = json.loads('{"name":"%s","time":"%s","surge_multiplier":"%s","lat":"%s","lon":"%s"}' % (company["name"], time.time(), price["surge_multiplier"], start_latitude, start_longitude), )
-                print(item)
-                database.insert(dynamodb_table, item)            
+                # print(item)
+                database.insert(dynamodb_table, item)
         time.sleep(5)
-
