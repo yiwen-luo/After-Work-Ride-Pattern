@@ -138,7 +138,7 @@ ssh -i /path/my-key-pair.pem ec2-user@ec2-198-51-100-1.compute-1.amazonaws.com
 
 After connecting with EC2, if one want to run locally, then
 
-
+```
 $ python main.py
 
 ```
