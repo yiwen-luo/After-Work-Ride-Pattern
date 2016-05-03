@@ -83,9 +83,9 @@ In addition, it includes rides_data_output and collection_areas folders. rides_d
 - `index.html`
 	- `index.html` is used to plot the uber surge multiplier vs time range by using Google Chart. One could just open the html file in Firefox. Chrome does not perform perfect since it assures one to deploy the web application on a server. It uses `d3js` to open the local tsv file and extracts the data as required json array.
 - `weather.py`
-	- `weather.py` does similar job to retrieve weather information. Output data format is {weather, time, order}.
+	- `weather.py` does similar job to retrieve weather information. Output data format is `{weather, time, order}`.
 - `incident.py`
-	- `incident.py` does similar job to retrieve incident information. Output data format is {time, order, latitude, longtitude, incident, company}.
+	- `incident.py` does similar job to retrieve incident information. Output data format is `{time, order, latitude, longtitude, incident, company}`.
 - `location.json`
 	- `location.json` contains geolocation of the 6 companies we choose as our target of investigation.
 - `yellow_cab_process.py`
