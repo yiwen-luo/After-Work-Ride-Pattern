@@ -8,6 +8,8 @@ project: Final Project
 
 # Where New Yorkers gonna go after work?
 
+Our story website: http://flandroid.wix.com/nyctravelpattern
+
 This repository contains a collection of data and scripts that help us manage the data storage and picture plotting. The details of implementation are discussed below and within scripts as comments.
 
 ![screenshot](uber_surge/presentation_img/Google_12_24.png)
