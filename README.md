@@ -130,7 +130,7 @@ $ sudo pip install boto3
 ```
 and type the AWS password.
 
-## How to operate virtual machine remotely
+## How to operate virtual machines remotely
 
 Connecting to Your Linux Instance Using SSH
 
@@ -200,7 +200,13 @@ then we can get all drop off data within 2 hours around peak hours for each comp
 
 ## Google Heatmap plotting
 
-For taxi rides data, specifically the `YellowcabHeatMap.html` file, one could just open up in Chrome since it doesn't use `d3js` for data retrieving. There are further work suggested that we could turn it into a Backend-Frontend design with the usage of Django or Flask. However, since this is just for the presentation purpose, we just manually import the data that we get from python files.
+For taxi rides data, after we get output from the previous step, we should update input parameters in the `YellowcabHeatMap.html` file, and sometimes for better analysis, we combine multiple days' results as one input. Now, one could just open up in Chrome since it doesn't use `d3js` for data retrieving. There are further work suggested that we could turn it into a Backend-Frontend design with the usage of Django or Flask. However, since this is just for the presentation purpose, we just manually import the data that we get from python files.
+
+A heatmap is a visualization used to depict the intensity of data at geographical points. When the Heatmap Layer is enabled, a colored overlay will appear on top of the map. By default, areas of higher intensity will be colored red, and areas of lower intensity will appear green.[3]
+
+![screenshot](img/heatmap.png)
+
+Here's some examples for our taxi data visualization
 
 ![screenshot](rides_data_output/rain/bloomberg/Picture2.png)
 
