@@ -15,7 +15,9 @@ This repository contains a collection of data and scripts that help us manage th
 
 # Project introduction
 
-New York City, a major in the world, has a population more than 5.5 million in 2015 [1], where people working for all walks of life can be found. The general public may have impressions of New Yorkers’ life to be fast paced, stressful and having little private time. The financial industry jobs are widely known as one of the busiest careers in New York City. [2] In addition to the financial industry, other industries like the technology industry and the media industry also have considerable employee populations. This project focused on the after-work travel patterns of employees in Manhattan of the three industries, namely finance, media and technology. Studies on data will be implemented on taxi data, Uber surge pricing data, weather data and traffic incident data. In this project, six companies, Goldman Sachs, Deutsche Bank, Google, Palantir Technology, The Wall Street Journal and Bloomberg, were studied as the representatives of each of the three industries. Reasons and considerations behind selecting these companies are discussed in later sections.
+**Note**: All citations of the introduction part are in the design document.
+
+New York City, a major in the world, has a population more than 5.5 million in 2015, where people working for all walks of life can be found. The general public may have impressions of New Yorkers’ life to be fast paced, stressful and having little private time. The financial industry jobs are widely known as one of the busiest careers in New York City. In addition to the financial industry, other industries like the technology industry and the media industry also have considerable employee populations. This project focused on the after-work travel patterns of employees in Manhattan of the three industries, namely finance, media and technology. Studies on data will be implemented on taxi data, Uber surge pricing data, weather data and traffic incident data. In this project, six companies, Goldman Sachs, Deutsche Bank, Google, Palantir Technology, The Wall Street Journal and Bloomberg, were studied as the representatives of each of the three industries. Reasons and considerations behind selecting these companies are discussed in later sections.
 
 On demand realtime limousine services, also called ride-share services, are gaining their popularities during recent years. Passengers can simply open an application on their smartphones and request rides anytime anywhere where the services are provided. Typical service providers in New York City and other major cities in the US are Uber, Lyft, and Gett. Before the passenger sending an actual request a ride, an estimated price (for services pricing on time and distance of the ride) or a confirmed price (for services with fixed pricing) is shown. The pricing mechanism of such services is not fixed but dynamic, which is called surging price by Uber. It is a pricing strategy used when there are high demands of ride-share services. When available Uber cars can’t satisfy a high demand from passengers in a certain area, Uber will raise the pricing rate to re-balance the supply and demand of the service. More drivers are encouraged to serve in the area with high surge price when there is limited number of available cars and relatively high demand of services.
 
@@ -112,13 +114,14 @@ Please use pip for some other Python package manager to install the following no
 
 - `boto3==1.3.1`
 
-Amazon Web Services (AWS), is a collection of cloud computing services that make up the on-demand computing platform offered by Amazon.com. These services operate from 12 geographical regions across the world. The most central and best-known of these services arguably include Amazon Elastic Compute Cloud, also known as "EC2", and Amazon Simple Storage Service, also known as "S3". AWS now has more than 70 services that range from compute, storage, networking, database, analytics, application services, deployment, management and mobile. Amazon markets AWS as a service to provide large computing capacity quicker and cheaper than a client company building an actual physical server farm.
+Amazon Web Services (AWS), is a collection of cloud computing services that make up the on-demand computing platform offered by Amazon.com. These services operate from 12 geographical regions across the world. The most central and best-known of these services arguably include Amazon Elastic Compute Cloud, also known as "EC2", and Amazon Simple Storage Service, also known as "S3". AWS now has more than 70 services that range from compute, storage, networking, database, analytics, application services, deployment, management and mobile. Amazon markets AWS as a service to provide large computing capacity quicker and cheaper than a client company building an actual physical server farm. [1]
 
-Amazon Elastic Compute Cloud (EC2) forms a central part of Amazon.com's cloud-computing platform, Amazon Web Services (AWS), by allowing users to rent virtual computers on which to run their own computer applications.
+Amazon Elastic Compute Cloud (EC2) forms a central part of Amazon.com's cloud-computing platform, Amazon Web Services (AWS), by allowing users to rent virtual computers on which to run their own computer applications. [2]
 
-Amazon DynamoDB is a fast and flexible NoSQL database service for all applications that need consistent, single-digit millisecond latency at any scale. It is a fully managed cloud database and supports both document and key-value store models. Its flexible data model and reliable performance make it a great fit for mobile, web, gaming, ad tech, IoT, and many other applications.
+Amazon DynamoDB is a fast and flexible NoSQL database service for all applications that need consistent, single-digit millisecond latency at any scale. It is a fully managed cloud database and supports both document and key-value store models. Its flexible data model and reliable performance make it a great fit for mobile, web, gaming, ad tech, IoT, and many other applications. [3]
 
 Boto3 is the Amazon Web Services (AWS) Software Development Kit (SDK) for Python, which allows Python developers to write software that makes use of services like Amazon S3 and Amazon EC2. You can find the latest, most up to date, documentation at Read the Docs, including a list of services that are supported.
+[4]
 
 ```
 $ pip install boto3
@@ -136,7 +139,7 @@ Connecting to Your Linux Instance Using SSH
 
 After you launch your instance, you can connect to it and use it the way that you'd use a computer sitting in front of you.
 
-Use the chmod command to make sure your private key file isn't publicly viewable. For example, if the name of your private key file is my-key-pair.pem, use the following command:
+Use the chmod command to make sure your private key file isn't publicly viewable. For example, if the name of your private key file is my-key-pair.pem, use the following command: [5]
 
 ```  
 $ chmod 400 /path/my-key-pair.pem
@@ -185,7 +188,7 @@ First, we can obtain peak hours for six companies from surge program and plot pr
 ```
 $ python plot.py
 ```
-For uber__surge data, one just need to open the `index.html` in Firefox. The project is hard to be deployed on Chrome, since there will be error message telling users that the local intermediate data file should be uploaded on a local server, while Firefox has no such requirement.
+For uber_surge data, one just need to open the `index.html` in Firefox. The project is hard to be deployed on Chrome, since there will be error message telling users that the local intermediate data file should be uploaded on a local server, while Firefox has no such requirement.
 
 We use the `d3.tsv("data.tsv", function(data) {[codes]}` function from `d3js` to import local file to a Javascript json-object array. Then this array could be parsed and generate the uber surge multiplier. The Google line chart presents great tools to add legend, color of lines and show line charts with smoothed curvature, which help us observe the uber surge price pattern.
 
@@ -202,7 +205,7 @@ then we can get all drop off data within 2 hours around peak hours for each comp
 
 For taxi rides data, after we get output from the previous step, we should update input parameters in the `YellowcabHeatMap.html` file, and sometimes for better analysis, we combine multiple days' results as one input. Now, one could just open up in Chrome since it doesn't use `d3js` for data retrieving. There are further work suggested that we could turn it into a Backend-Frontend design with the usage of Django or Flask. However, since this is just for the presentation purpose, we just manually import the data that we get from python files.
 
-A heatmap is a visualization used to depict the intensity of data at geographical points. When the Heatmap Layer is enabled, a colored overlay will appear on top of the map. By default, areas of higher intensity will be colored red, and areas of lower intensity will appear green.[3]
+A heatmap is a visualization used to depict the intensity of data at geographical points. When the Heatmap Layer is enabled, a colored overlay will appear on top of the map. By default, areas of higher intensity will be colored red, and areas of lower intensity will appear green.
 
 ![screenshot](img/heatmap.png)
 
@@ -215,3 +218,16 @@ Deeper color means that more taxis drop off passengers there.
 And when we change radius, which means increasing the radius of every point, we can get a graph like below.
 
 ![screenshot](rides_data_output/friday/bloomberg/Picture1.png)
+
+## Citation
+[1] https://aws.amazon.com/what-is-aws/
+
+[2] https://en.wikipedia.org/wiki/Amazon_Elastic_Compute_Cloud
+
+[3] http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html
+
+[4] https://boto3.readthedocs.io/en/latest/
+
+[5] http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html
+
+[6] https://developers.google.com/maps/documentation/javascript/heatmaplayer
