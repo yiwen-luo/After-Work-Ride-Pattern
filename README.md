@@ -192,7 +192,7 @@ For uber_surge data, one just need to open the `index.html` in Firefox. The proj
 
 We use the `d3.tsv("data.tsv", function(data) {[codes]}` function from `d3js` to import local file to a Javascript json-object array. Then this array could be parsed and generate the uber surge multiplier. The Google line chart presents great tools to add legend, color of lines and show line charts with smoothed curvature, which help us observe the uber surge price pattern.
 
-And then we can observe peak hours from graph and change parameters in `yellow_cab_process.py` and run
+And then we can observe peak hours from graph and change parameters in `yellow_cab_process.py` (time window, start and end pick up time ) and run
 
 ```
 $ python yellow_cab_process.py
@@ -203,7 +203,7 @@ then we can get all drop off data within 2 hours around peak hours for each comp
 
 ## Google Heatmap plotting
 
-For taxi rides data, after we get output from the previous step, we should update input parameters in the `YellowcabHeatMap.html` file, and sometimes for better analysis, we combine multiple days' results as one input. Now, one could just open up in Chrome since it doesn't use `d3js` for data retrieving. There are further work suggested that we could turn it into a Backend-Frontend design with the usage of Django or Flask. However, since this is just for the presentation purpose, we just manually import the data that we get from python files.
+For taxi rides data, after we get output from the previous step, we should update input parameters (variable rawLat and rawLng) in the `YellowcabHeatMap.html` file, and sometimes for better analysis, we combine multiple days' results as one input. Now, one could just open up in Chrome since it doesn't use `d3js` for data retrieving. There are further work suggested that we could turn it into a Backend-Frontend design with the usage of Django or Flask. However, since this is just for the presentation purpose, we just manually import the data that we get from python files.
 
 A heatmap is a visualization used to depict the intensity of data at geographical points. When the Heatmap Layer is enabled, a colored overlay will appear on top of the map. By default, areas of higher intensity will be colored red, and areas of lower intensity will appear green.[6]
 
