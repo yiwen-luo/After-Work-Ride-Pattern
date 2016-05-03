@@ -41,19 +41,19 @@ The data visualization is responsible for extracting data from cloud, calculatin
 ## uber_surge
 This folder contains scripts and codes to retrieve data from uber api and store surge price multiplier to DynamoDB for 6 different companies in Manhattan every 5 seconds for further analysis.
 
-![screenshot](img/uber_api.png)
+![screenshot](readme_img/uber_api.png)
 
 ## weather
 This folder contains similar files to uber_surge. `Weather.py` can crawl weather and corresponding time by yahoo_weather API and store them into our database. Considering the manhattan has the same weather, we only targeted an uniform weather.
 
-![screenshot](img/yahoo_weather.png)
+![screenshot](readme_img/yahoo_weather.png)
 
 ## incident
 This folder includes database program which is created for calling kinds of operations to database, for example, create, insert, delete and get table.
 
 Also, we wrote `incident.py` to fetch incident data around specific companies through MapQuest API. Specifically, given a location and a radius value and incident information can be returned and stored into DynamoDB.
 
-![screenshot](img/mapquest.png)
+![screenshot](readme_img/mapquest.png)
 
 **Note:** Some configuration files are not uploaded since they contains either api keys or AWS credentials
 
@@ -205,7 +205,7 @@ For taxi rides data, after we get output from the previous step, we should updat
 
 A heatmap is a visualization used to depict the intensity of data at geographical points. When the Heatmap Layer is enabled, a colored overlay will appear on top of the map. By default, areas of higher intensity will be colored red, and areas of lower intensity will appear green.[6]
 
-![screenshot](img/heatmap.png)
+![screenshot](readme_img/heatmap.png)
 
 Here's some examples for our taxi data visualization
 
