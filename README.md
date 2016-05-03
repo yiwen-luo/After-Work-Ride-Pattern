@@ -185,11 +185,11 @@ First, we can obtain peak hours for six companies from surge program and plot pr
 ```
 $ python plot.py
 ```
-
 For uber__surge data, one just need to open the `index.html` in Firefox. The project is hard to be deployed on Chrome, since there will be error message telling users that the local intermediate data file should be uploaded on a local server, while Firefox has no such requirement.
 
+We use the `d3.tsv("data.tsv", function(data) {[codes]}` function from `d3js` to import local file to a Javascript json-object array. Then this array could be parsed and generate the uber surge multiplier. The Google line chart presents great tools to add legend, color of lines and show line charts with smoothed curvature, which help us observe the uber surge price pattern.
 
-And then we can observe peak hours from graph and change parameters in yellow_cab_process.py and run
+And then we can observe peak hours from graph and change parameters in `yellow_cab_process.py` and run
 
 ```
 $ python yellow_cab_process.py
@@ -210,7 +210,7 @@ Here's some examples for our taxi data visualization
 
 ![screenshot](rides_data_output/rain/bloomberg/Picture2.png)
 
-Deeper color there is, means more taxis drop off passengers there.
+Deeper color means that more taxis drop off passengers there.
 
 And when we change radius, which means increasing the radius of every point, we can get a graph like below.
 
