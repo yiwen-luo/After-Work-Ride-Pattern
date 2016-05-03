@@ -71,7 +71,7 @@ In addition, it includes rides_data_output and collection_areas folders. rides_d
 	- Makefile is for easier deploy of application. `make clean` could be used to clear uncorrelated files. I define `make` for different functionality, either `main.py` for testing of data retrieving, or `plot.py` for getting analyzed information necessary for further testing.
 - `main.py`
 	- `main.py` is used to retrieve data from uber api to get uber surge multiplier information. Then the data are stored into DynamoDB in the format of `{name, time, surge_multiplier, lat, lon}`. `name` means company name. `lat` and `lon` represented latitude and longitude of the company's main entrance. These information are specified in the `location.json` file. `surge_multiplier` is the current surge multiplier around the location that we are interested. It has an infinite loop to retrieve uber api. One could just type `python main.py` or in AWS, type `nohup python main.py &`. AWS trigger could be used to detect exceptions.
-- We use a small nodejs tool to export the DynamoDB data into a csv file, rather than the original AWS export function pipeline. The command is: `node dynamoDBtoCSV.js -t [db name] > output.csv`.
+- We use a small nodejs tool to export the DynamoDB data into a csv file, rather than the original AWS export function pipeline. The command is: `node dynamoDBtoCSV.js -t [db name] > output.csv`. Further usage could be checked via Github repository. [7]
 - `plot.py`
 	- `plot.py` read the csv data file and analyzed the averaged surge multiplier information for further use. It stored the favored surge information from noon to midnight to a local tsv file, for the use to plot Google charts. The stored data format could be checked by taking look at the `data.tsv` file. Usage is `python plot.py`.
 - `database.py`
@@ -231,3 +231,5 @@ And when we change radius, which means increasing the radius of every point, we 
 [5] http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html
 
 [6] https://developers.google.com/maps/documentation/javascript/heatmaplayer
+
+[7] https://github.com/edasque/DynamoDBtoCSV
